@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vital Nature – التحقق من المنتج</title>
+<style>
+  body{margin:0;font-family:Arial, sans-serif;background:#f4f4f4;}
+  .container{max-width:420px;margin:40px auto;background:#fff;border-radius:14px;
+    box-shadow:0 10px 28px rgba(0,0,0,.14);padding:22px;text-align:center;}
+  .logo{font-size:28px;font-weight:800;color:#0c6b3c;letter-spacing:.3px}
+  .badge{display:inline-block;margin:10px 0 4px;background:#e7f6ee;color:#0c6b3c;
+    padding:8px 12px;border-radius:999px;font-weight:700}
+  .status{font-size:18px;font-weight:800;margin:8px 0;color:#0c6b3c}
+  .hint{color:#555;font-size:14px;margin:0 0 14px}
+  .card{background:#f7f7f7;border:1px solid #e8e8e8;border-radius:12px;padding:12px;text-align:right}
+  .row{display:flex;justify-content:space-between;gap:10px;align-items:center;margin:8px 0}
+  .k{color:#666;font-size:13px}
+  .v{font-weight:800;color:#222;direction:ltr}
+  .btn{display:block;margin-top:14px;background:#0c6b3c;color:#fff;text-decoration:none;
+    padding:12px 14px;border-radius:12px;font-weight:800}
+  .footer{margin-top:14px;color:#888;font-size:12px}
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">Vital Nature</div>
+    <div class="badge">✅ المنتج أصلي</div>
+    <div class="status">تم التحقق بنجاح</div>
+    <p class="hint">إذا ظهر لك نفس الرقم التسلسلي الموجود على العبوة فهذا المنتج أصلي.</p>
+
+    <div class="card">
+      <div class="row"><div class="k">الرقم التسلسلي</div><div class="v" id="sn">VN-AL-0001</div></div>
+      <div class="row"><div class="k">تاريخ التحقق</div><div class="v" id="dt"></div></div>
+    </div>
+
+    <!-- ضع رابط واتساب الخاص بك (اختياري) -->
+    <a class="btn" id="wa" href="#" target="_blank" rel="noopener">تواصل معنا عبر واتساب</a>
+
+    <div class="footer">© 2026 Vital Nature</div>
+  </div>
+
+<script>
+  // قراءة الرقم التسلسلي من الرابط: ?sn=XXXX
+  const params = new URLSearchParams(location.search);
+  const sn = params.get("sn") || "VN-AL-0001";
+  document.getElementById("sn").textContent = sn;
+
+  // تاريخ اليوم
+  const d = new Date();
+  document.getElementById("dt").textContent = d.toLocaleString("ar-DZ");
+
+  // واتساب (غيّر الرقم هنا)
+  const whatsappNumber = "213600000000"; // مثال: 2135XXXXXXXX
+  const msg = encodeURIComponent("مرحبا، أريد التحقق من المنتج. الرقم التسلسلي: " + sn);
+  document.getElementById("wa").href = "https://wa.me/" + whatsappNumber + "?text=" + msg;
+</script>
+</body>
+</html>
