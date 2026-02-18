@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VitalNature – Product Verification</title>
+
+<style>
+body{margin:0;font-family:Arial;background:#f4f4f4}
+.box{max-width:400px;margin:40px auto;background:white;padding:20px;border-radius:12px;text-align:center;box-shadow:0 6px 20px rgba(0,0,0,.2)}
+h2{color:#0c6b3c}
+input{width:90%;padding:10px;border-radius:8px;border:1px solid #ccc}
+button{margin-top:10px;padding:10px 25px;border:0;border-radius:8px;background:#0c6b3c;color:white}
+.ok{color:green;font-weight:bold}
+.no{color:red;font-weight:bold}
+</style>
+</head>
+
+<body>
+<div class="box">
+<h2>VitalNature</h2>
+<p>Product Verification</p>
+
+<input id="sn" placeholder="Enter Serial Number">
+
+<br>
+<button onclick="check()">Verify</button>
+
+<p id="result"></p>
+</div>
+
+<script>
+function check(){
+let s=document.getElementById("sn").value.toUpperCase();
+
+if(s=="VN-2026-0001"||s=="VN-2026-0002"){
+document.getElementById("result").innerHTML="<span class='ok'>Authentic Product ✅</span>";
+}else{
+document.getElementById("result").innerHTML="<span class='no'>Invalid Serial ❌</span>";
+}
+}
+
+const p=new URLSearchParams(window.location.search);
+if(p.get("sn")){
+document.getElementById("sn").value=p.get("sn");
+check();
+}
+</script>
+
+</body>
+</html>
